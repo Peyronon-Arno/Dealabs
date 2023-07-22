@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dealabs
+
+{% endblock %}
+
+{% block body %}
+	<link rel="stylesheet" href="{{ asset('css/deal-promo-list.css') }}">
+
+	<div class="popular-merchand-component">
+		{{ include('popular-lists.html.twig', {'marchands': marchands}, {'categories': categories}) }}
+	</div>
+	{% for item in items %}
+		{% if item is instanceof('App\\Entity\\Promo') %}
+			{{ include('partials/promos/promoCard.html.twig', {'promo': item}) }}
+		{% elseif item is instanceof('App\\Entity\\Deal')  %}
+			{{ include('partials/deals/dealCard.html.twig', {'deal': item}) }}
+		{% endif %}
+	{% endfor %}
+{% endblock %}

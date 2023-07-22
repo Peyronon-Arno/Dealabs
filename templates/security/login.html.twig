@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!
+{% endblock %}
+
+{% block body %}
+	<link rel="stylesheet" href="{{ asset('css/registration.css') }}">
+	<div class="main-login-content">
+		<div class="card main-login-width">
+			<form class="login-form" method="post">
+				{% if app.user %}
+					<div class="mb-3">
+						You are logged in as
+						{{ app.user.userIdentifier }},
+						<a href="{{ path('app_logout') }}">Logout</a>
+					</div>
+				{% endif %}
+
+				<h1 class="h3 mb-3 font-weight-normal text-center">Please sign in</h1>
+				<hr>
+				<div class="input-login">
+					<label for="inputIdentifier">Email/Pseudo</label>
+					<input type="text" value="{{ last_username }}" name="identifier" id="inputIdentifier" class="form-control" autocomplete="off" required autofocus>
+				</div>
+				<div class="input-login">
+					<label for="inputPassword">Password</label>
+					<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+				</div>
+				<div class="d-flex justify-content-between align-items-center linkable">
+					<a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
+					<a href="{{ path('app_register') }}">Pas encore inscrit ?</a>
+				</div>
+
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				<div class="btn-login-div">
+					<button class="btn btn-lg btn-primary btn-login" type="submit">Sign in</button>
+				</div>
+
+				{% if error %}
+					<div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				{% endif %}
+			</form>
+		</div>
+	</div>
+{% endblock %}

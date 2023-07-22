@@ -1,0 +1,76 @@
+<div class="container card card-alert">
+	<div class="mt-4">
+		<h4>Nouvelle alerte</h4>
+		<form method="POST" action="{{ path('app_user_alerts_add') }}">
+			<div class="form-group">
+				<label for="alert-input">Nom de l'alerte</label>
+				<input type="text" class="form-control" id="alert-input" name="alertText">
+			</div>
+			<div class="form-group temp-alert">
+				<div>
+					<div class="d-flex align-items-center">
+						<label>Température minimum Hot:
+						</label>
+						<span id="selected-temperature">0</span>
+						<input type="hidden" id="alert-temperature" name="temperature">
+					</div>
+				</div>
+				<div class="d-flex justify-content-between">
+					<button type="button" class="btn btn-secondary temperature-btn" data-value="0">0</button>
+					<button type="button" class="btn btn-secondary temperature-btn" data-value="50">
+						<i class="fa-solid fa-fire"></i>
+					</button>
+					<button type="button" class="btn btn-secondary temperature-btn" data-value="100">
+						<i class="fa-solid fa-fire fa-2x"></i>
+					</button>
+					<button type="button" class="btn btn-secondary temperature-btn" data-value="150">
+						<i class="fa-solid fa-fire fa-3x"></i>
+					</button>
+				</div>
+			</div>
+			<div class="form-group form-notification">
+				<label>Notifications:
+				</label>
+				<div class="form-check">
+					<input type="checkbox" class="form-check-input" id="notification-checkbox" name="notification">
+					<input type="hidden" id="alert-notification" name="notification">
+					<label class="form-check-label" for="notification-checkbox">Recevoir une notification par e-mail une fois par jour regroupant tous les deals correspondant à cette alerte</label>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary btn-create">Créer une alerte</button>
+		</form>
+	</div>
+</div>
+
+<div class="container card card-alert">
+	<h2>Mes alertes sauvegardées</h2>
+	{% for alerte in alertes %}
+		<span>{{ alerte.name }}</span>
+		<hr>
+	{% endfor %}
+</div>
+
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+const temperatureButtons = document.querySelectorAll('.temperature-btn');
+const selectedTemperature = document.getElementById('selected-temperature');
+const alertTemperature = document.getElementById('alert-temperature');
+const alertNotification = document.getElementById('alert-notification');
+const checkbox = document.getElementById('notification-checkbox');
+
+temperatureButtons.forEach((button) => {
+button.addEventListener('click', () => {
+const value = button.getAttribute('data-value');
+selectedTemperature.innerText = value;
+alertTemperature.value = value;
+});
+});
+
+checkbox.addEventListener('change', () => {
+console.log(checkbox.checked)
+alertNotification.value = checkbox.checked;
+});
+
+});
+</script>

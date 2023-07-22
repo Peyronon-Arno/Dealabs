@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="{{ asset('css/popular-list.css') }}">
+
+<div class="popular-card">
+	<h2 class="popular-card-title">Catégories populaires</h2>
+	<hr>
+	<div class="popular-list">
+		{% for categorie in categories %}
+			<div class="popular-item popular-item-width-100 d-flex">
+				{% if categorie.imageName %}
+					<img src="{{ vich_uploader_asset(categorie, 'imageFile') }}" alt="{{ categorie.title }}">
+				{% else %}
+					<img src="https://via.placeholder.com/100" alt="Logo Catégories">
+				{% endif %}
+				<a class="popular-item-title">
+					{{categorie.title}}
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+</div>

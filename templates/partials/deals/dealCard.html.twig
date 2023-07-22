@@ -1,0 +1,74 @@
+{% block body %}
+	<link rel="stylesheet" href="{{ asset('css/deal-promo-list.css') }}">
+	<div class="main-container" style="justify-content: center">
+		<div class="main-container-width">
+			{% if currentDate > deal.expirationDate %}
+				<div class="card disabled-card" style="width:80%">
+				{% else %}
+					<div class="card" style="width:80%">
+					{% endif %}
+					<div class="row">
+						<div class="col-md-3 d-flex align-items-center">
+							<a href="{{ path('app_deals_details', { 'id': deal.id }) }}">
+								{% if deal.imageName == null %}
+									<img src="{{ asset('images/dealabs-default.jpg') }}" class="card-img image" alt="{{ deal.title }}">
+								{% else %}
+									<img src="{{ vich_uploader_asset(deal, 'imageFile') }}" alt="{{ deal.title }}" class="card-img image">
+								{% endif %}
+							</a>
+						</div>
+						<div class="col-md-9">
+							<div class="card-body">
+								{{ include('partials/degrees.html.twig', {'item': deal }) }}
+
+								<h5 class="card-title title">
+									<a href="{{ path('app_deals_details', { 'id': deal.id }) }}">{{ deal.title }}</a>
+								</h5>
+								<p class="card-text price">{{deal.price}}€</p>
+								<h6 class="card-text">{{deal.description}}</h6>
+								<div class="bottom-card">
+									<div class="user">
+										<a class="username" href="#">
+											<i class="fa fa-user"></i>
+											<span>{{ deal.user.username }}</span>
+										</a>
+									</div>
+									<div class="user">
+										<span>{{ deal.createdAt|date('Y-m-d') }}</span>
+									</div>
+									<div>
+										<a href="{{ path('app_deals_details', { 'id': deal.id }) }}" class="btn btn-check-deal">Voir le deal
+											<i class="fa-solid fa-share-from-square"></i>
+										</a>
+
+										{% if app.user %}
+											<a href="{{ path('app_deal_addDealFavorite', { 'id': deal.id }) }}" class="btn btn-check-deal">
+
+												{% if deal in app.user.favoriteDeals %}
+													<i class="fa-solid fa-bookmark"></i>
+												{% else %}
+													<i class="fa-regular fa-bookmark"></i>
+												{% endif %}
+											</a>
+										{% endif %}
+										{% if app.user %}
+											<a href="{{ path('app_deal_signalDeal', { 'id': deal.id }) }}" class="btn btn-check-deal">
+												{% if deal in app.user.signalements %}
+													<i class='fa-solid fa-warning'></i>
+												{% else %}
+													<i class='fa fa-warning' color="white"></i>
+												{% endif %}
+											</a>
+										{% endif %}
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

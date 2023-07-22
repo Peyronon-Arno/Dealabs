@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Result!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.card-marchand {
+			width: 20% !important;
+			text-align: center;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+		}
+	</style>
+
+	{% for result in results %}
+		{% if result is instanceof('App\\Entity\\Marchand') %}
+			{{ include('partials/marchand/marchandCard.html.twig', {'marchand': result}) }}
+		{% endif %}
+		{% if result is instanceof('App\\Entity\\Promo') %}
+			{{ include('partials/promos/promoCard.html.twig', {'promo': result}) }}
+		{% elseif result is instanceof('App\\Entity\\Deal')  %}
+			{{ include('partials/deals/dealCard.html.twig', {'deal': result}) }}
+		{% endif %}
+	{% endfor %}
+{% endblock %}

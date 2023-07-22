@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Promotions
+
+{% endblock %}
+
+{% block body %}
+	<link rel="stylesheet" href="{{ asset('css/deal-promo-list.css') }}">
+
+	<div>
+		<div class="popular-merchand-component">
+			{{ include('popular-lists.html.twig', {'marchands': marchands}, {'categories': categories}) }}
+		</div>
+		{% for promo in promos %}
+			{{ include('partials/promos/promoCard.html.twig', {'promo': promo}) }}
+		{% endfor %}
+	</div>
+{% endblock %}

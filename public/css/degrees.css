@@ -1,0 +1,28 @@
+.degrees {
+    background-color: white;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 20px;
+    border: 2px solid black !important;
+}
+
+.degree-minus {
+    color: #02a4c1;
+}
+
+.degree-minus:hover {
+    background-color: #e6f8fc;
+}
+
+.degree-plus {
+    color: #e00438;
+}
+
+.degree-plus:hover {
+    background-color: #fae8e6;
+}
+
+.disabled {
+    border: none !important;
+    background-color: #d9d5d5 !important;
+}

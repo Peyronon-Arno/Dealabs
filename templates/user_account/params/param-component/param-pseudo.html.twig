@@ -1,0 +1,43 @@
+<label for="username">VOTRE PSEUDO</label>
+<span>{{ user.username }}</span>
+<div class="btn-container">
+	<button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#modalPseudo">Modifier</button>
+</div>
+
+
+{# MODAL + SCRIPT TO EDIT PSEUDO #}
+<div class="modal fade" id="modalPseudo" tabindex="-1" role="dialog" aria-labelledby="modalPseudoLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalPseudoLabel">Modifier votre pseudo</h5>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">
+						<i class="fa fa-close"></i>
+					</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="newPseudo">Nouveau pseudo</label>
+						<input type="text" class="form-control" id="newPseudo">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+				<button type="button" class="btn btn-primary" onclick="savePseudo()">Enregistrer</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function savePseudo() {
+var newPseudo = $('#newPseudo').val();
+var url = "{{ path('app_user_params_edit_pseudo', { 'value': '__VALUE__' }) }}";
+url = url.replace('__VALUE__', newPseudo);
+window.location.href = url;
+}
+</script>

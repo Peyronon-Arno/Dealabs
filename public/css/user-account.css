@@ -1,0 +1,54 @@
+.btn-check-deal {
+  background-color: #36b7cd;
+  border-color: #36b7cd;
+  margin-left: 10px;
+}
+
+.btn-check-deal:hover {
+  background-color: #3cc8df;
+  border-color: #3cc8df;
+}
+
+.bottom-card {
+  display: flex;
+}
+.user-header {
+  width: 100%;
+  height: 100px;
+}
+
+.stats {
+  height: 100%;
+  margin: 15px;
+}
+
+.main-div-user {
+  display: flex;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+.card-img {
+  width: 50%;
+}
+
+.badge-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rounded-image {
+  border: 1px solid black;
+  border-radius: 20px;
+  height: 100px;
+  width: 100px;
+}
+
+.main-header {
+  background: #055160;
+}

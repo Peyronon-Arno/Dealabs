@@ -1,0 +1,15 @@
+{% block body %}
+	<div class="main-container" style="justify-content: center">
+		<div class="main-container-width">
+			<div class="card card-marchand">
+				<div class="col-md-9">
+					<div class="card-body">
+						<h5 class="card-title title">
+							<a href="{{ path('app_marchand_promos', { 'id': marchand.id }) }}">{{ marchand.name }}</a>
+						</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

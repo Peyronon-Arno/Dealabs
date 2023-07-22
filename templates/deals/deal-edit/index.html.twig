@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Édition du deal -
+	{{ deal.title }}
+{% endblock %}
+
+{% block body %}
+	<link rel="stylesheet" href="{{ asset('css/registration.css') }}">
+
+	<div class="main-login-content">
+		<div class="card main-login-width">
+			<h1 class="text-center">Éditer</h1>
+
+			{% for flash_error in app.flashes('error') %}
+				<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+			{% endfor %}
+
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<button type="submit" class="btn btn-login">Éditer</button>
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endblock %}

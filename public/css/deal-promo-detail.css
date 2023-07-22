@@ -1,0 +1,62 @@
+.card {
+    flex-direction: row
+}
+.card-img-top {
+    width: 300px;
+    height: 300px;
+}
+
+.img-position {
+    margin: 20px;
+}
+
+.container {
+    height: auto;
+}
+
+
+.btn-see {
+    margin-bottom: 30px;
+    width: 100%
+}
+
+.see {
+    width: content;
+    border-radius: 20px;
+    background-color: #36b7cd;
+    border-color: #36b7cd;
+}
+
+.see:hover {
+    background-color: #03a5c1;
+    border-color: #03a5c1;
+}
+
+.card-text span,
+.title,
+.price {
+    margin-bottom: 30px
+}
+
+
+.card-description {
+    background-color: #fff;
+    border-radius: 0.375rem
+}
+
+.btn-editer {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+@media(max-width: 768px) {
+    .card-img-top {
+        width: 100%;
+        height: auto;
+    }
+
+    .img-position {
+        margin: 20px 0;
+    }
+}

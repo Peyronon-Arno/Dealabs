@@ -1,0 +1,19 @@
+<div class="alert-nav">
+	<nav class="navbar navbar-alert navbar-expand-lg navbar-light bg-white">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+			<ul class="navbar-nav ul-alert">
+				<li class="nav-item">
+					<a class="nav-link {% if second_tab == 'alertes-fil' %}active{% endif %}" href="{{ path('app_user_alerts_fil') }}">
+						<i class="fa-solid fa-bell"></i>Fil d'alertes</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link {% if second_tab == 'alertes-param' %}active{% endif %}" href="{{ path('app_user_alerts_param') }}">
+						<i class=" fa-solid fa-gear"></i>Gérer mes alertes</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</div>

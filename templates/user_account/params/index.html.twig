@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Parameters!
+{% endblock %}
+
+{% block body %}
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+	<link rel="stylesheet" href="{{ asset('css/params.css') }}">
+
+	<div class="row">
+		<div class="col-12 col-md-4">
+			<div class="card height">
+				<div class="card-body">
+					<h2>Paramètres</h2>
+					<span>
+						<i class="fa fa-user"></i>
+						Profil
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-8">
+			<div class="card">
+				<div class="card-body">
+					<h2 class="mb-4">Profil</h2>
+					<div class="grid-container">
+						<div class="grid-item">
+							{{ include('user_account/params/param-component/param-image.html.twig', {'user': user}) }}
+						</div>
+						<div class="grid-item">
+							{{ include('user_account/params/param-component/param-pseudo.html.twig', {'user': user}) }}
+						</div>
+						<div class="grid-item">
+							{{ include('user_account/params/param-component/param-email.html.twig', {'user': user}) }}
+						</div>
+						<div class="grid-item">
+							{{ include('user_account/params/param-component/param-password.html.twig', {'user': user}) }}
+						</div>
+						<div class="grid-item">
+							{{ include('user_account/params/param-component/param-delete.html.twig', {'user': user}) }}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

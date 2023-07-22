@@ -1,0 +1,46 @@
+{% block body %}
+
+	<div class="col-md-6 col-lg-2 width-100">
+		<div class="card ">
+			<div class="card-body">
+				<h5 class="card-title">
+					<i class="fa fa-chart-simple"></i>
+					Statistiques
+				</h5>
+				<p class="card-text">Posts</p>
+				<p class="card-text">
+					<i class="fa fa-tag"></i>
+					{{app.user.deals | length}}
+					deals postés
+				</p>
+				<p class="card-text">
+					<i class="fa fa-comment"></i>
+					{{app.user.comments | length}}
+					commentaires postés
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-6 col-lg-2 width-100">
+		<div class="card ">
+			<div class="card-body">
+				<h5 class="card-title">
+					Palmarès
+				</h5>
+				<p class="card-text">
+					<i class="fa fa-fire"></i>
+					{{hotestDealValue}}° deal le plus hot
+				</p>
+				<p class="card-text">
+					<i class="fa fa-chart-simple"></i>
+					{{averageDegrees}}° en moyenne depuis 1 an
+				</p>
+				<p class="card-text">
+					<i class="fa-solid fa-chart-pie"></i>
+					{{hotDealPercentage}}% de deals hot
+				</p>
+			</div>
+		</div>
+	</div>
+{% endblock %}

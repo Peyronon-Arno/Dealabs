@@ -1,0 +1,46 @@
+{% block body %}
+	<div class="main-container" style="justify-content: center">
+		<div class="main-container-width">
+			{% if currentDate > promo.expirationDate %}
+				<div class="card disabled-card" style="width:80%">
+				{% else %}
+					<div class="card" style="width:80%">
+					{% endif %}
+					<div class="row">
+						<div class="col-md-3 d-flex align-items-center">
+							<a href="{{ path('app_promo_detail', { 'id': promo.id }) }}">
+								<img src="https://via.placeholder.com/300" class="card-img image" alt="Image not found">
+							</a>
+						</div>
+						<div class="col-md-9">
+							<div class="card-body">
+								{{ include('partials/degrees.html.twig', {'item': promo}) }}
+								<h5 class="card-title title">
+									<a href="{{ path('app_promo_detail', { 'id': promo.id }) }}">{{ promo.title }}</a>
+								</h5>
+								<p class="card-text price">{{promo.reduction}}
+									%</p>
+								<h6 class="card-text">{{promo.description}}</h6>
+								<div class="bottom-card">
+									<div class="user">
+										{% if promo.marchand %}
+											<a class="username" href="#">
+												<i class="fa fa-user"></i>
+												<span>{{ promo.marchand.name }}</span>
+											</a>
+										{% endif %}
+										<span>{{ promo.createdAt | date("d/m/Y") }}</span>
+									</div>
+									<a href="{{ path('app_promo_detail', { 'id': promo.id }) }}" class="btn btn-check-deal">Voir le code promo
+										<i class="fa-solid fa-share-from-square"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

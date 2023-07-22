@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du deal -
+	{{ deal.title }}
+{% endblock %}
+
+{% block body %}
+
+	<link rel="stylesheet" href="{{ asset('css/deal-promo-detail.css') }}">
+
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+				<div class="{{ remainingTime.days == 0 ? 'alert alert-danger' : 'alert alert-warning' }}" role="alert">
+					Il reste
+					{{ remainingTime.days }}
+					jours,
+					{{ remainingTime.h }}
+					heures,
+					{{ remainingTime.i }}
+					minutes avant la date d'expiration
+				</div>
+				<div class="card d-flex">
+					{% if deal.user == app.user %}
+						<a href="{{ path('app_deals_edit', { 'id': deal.id }) }}" class="btn btn-warning btn-editer">Éditer</a>
+					{% endif %}
+					<div class="img-position">
+						{% if deal.imageName == null %}
+							<img src="{{ asset('images/dealabs-default.jpg') }}" class="card-img-top" alt="{{ deal.title }}">
+						{% else %}
+							<img src="{{ vich_uploader_asset(deal, 'imageFile') }}" class="card-img-top" alt="{{ deal.title }}">
+						{% endif %}
+					</div>
+					<div class="card-body">
+						{{ include('partials/degrees.html.twig', {'item': deal}) }}
+						<h5 class="card-title title">{{ deal.title }}</h5>
+						<h3 class="card-text price">
+							<strong>
+								{{ deal.price }}€</strong>
+						</h3>
+						<div class="btn-see">
+							<a href="https://www.dealabs.com/bons-plans/mario-strikers-nintendo-switch-2559279" class="btn btn-primary see">Voir l'offre</a>
+							{% if app.user %}
+							<a href="{{ path('app_deal_addDealFavorite', { 'id': deal.id }) }}" class="btn btn-check-deal">
+
+								{% if deal in app.user.favoriteDeals %}
+									<i class="fa-solid fa-bookmark"></i>
+								{% else %}
+									<i class="fa-regular fa-bookmark"></i>
+								{% endif %}
+							</a>
+						{% endif %}
+						</div>
+						<span class="card-text">
+							<i class="fa fa-user"></i>
+							Partagé par
+							{{ deal.user.username }}
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 10px;">
+			<div class="col-md-8 offset-md-2">
+				<div class="card-description" style="padding : 10px">
+					<h5>À propos de ce deal
+					</h5>
+					<h6>Promotion sur le site SITE A METTRE</h6>
+					<hr>
+					<span>{{deal.description}}</span>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 10px;">
+			<div class="col-md-8 offset-md-2">
+				<div class="card-description" style="padding : 10px">
+					<h5>Commentaires :
+					</h5>
+					<hr>
+					{% for comment in deal.comments %}
+						<span>
+							<b>{{comment.user.username}}
+								:
+							</b>
+							{{comment.value}}</span>
+						<hr>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 10px; margin-bottom:10px">
+			<div class="col-md-8 offset-md-2">
+				<div class="card-description" style="padding: 10px">
+					<h5>Ajouter un commentaire :</h5>
+					<hr>
+					<form method="post" action="{{ path('app_deal_addComment', { 'id': deal.id }) }}">
+						<textarea name="comment" style="width:100%"></textarea>
+						<button type="submit" class="btn btn-primary see" style="width:100%">Envoyer</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	{% endblock %}

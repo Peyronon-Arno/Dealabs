@@ -1,0 +1,61 @@
+.popular-merchand-component {
+  position: absolute;
+  right: 10%;
+  top: 6.5%;
+}
+
+.main-container {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+}
+
+.main-container-width {
+  width: 60%;
+}
+
+.image {
+  margin-left: 10px;
+}
+
+.btn-check-deal {
+  background-color: #36b7cd;
+  border-color: #36b7cd;
+}
+
+.btn-check-deal:hover {
+  background-color: #3cc8df;
+  border-color: #3cc8df;
+}
+
+.user {
+  background-color: white;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+.username {
+  text-decoration: none;
+}
+
+.price {
+  color: #e00438;
+}
+
+.title {
+  cursor: pointer;
+}
+
+.title:hover {
+  color: #03a5c1;
+}
+
+/* .card {
+  width: 80%;
+} */
+
+.bottom-card {
+  display: flex;
+  justify-content: space-between;
+}

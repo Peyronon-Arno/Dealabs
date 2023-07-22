@@ -1,0 +1,28 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<form class="form-inline my-2 my-lg-0 mr-auto form-input" action="{{ path('app_search') }}">
+	<span class="input-group-text" id="search-icon">
+		<i class="btn btn-default nav-link fa fa-search"></i>
+	</span>
+	<input class="form-control" type="search" id="search-input" placeholder="Search" aria-label="Search">
+</form>
+
+<script>
+	$(document).ready(function () {
+$('#search-icon').click(function () {
+submitSearch();
+});
+
+$('#search-input').keydown(function (event) {
+if (event.keyCode === 13) { // 13 correspond à la touche Entrée
+event.preventDefault();
+submitSearch();
+}
+});
+
+function submitSearch() {
+var query = $('#search-input').val();
+window.location.href = '/search?q=' + encodeURIComponent(query);
+}
+});
+</script>

@@ -1,0 +1,32 @@
+<label for="deleteAccount">SUPPRIMER MON COMPTE</label>
+<div class="btn-container">
+	<button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#modalDeleteAccount">Supprimer mon compte</button>
+</div>
+
+{# MODAL + SCRIPT TO DELETE ACCOUNT #}
+<div class="modal fade" id="modalDeleteAccount" tabindex="-1" role="dialog" aria-labelledby="modalDeleteAccountLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalDeleteAccountLabel">Etes vous sur de vouloir supprimer votre mot de passe ?</h5>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">
+						<i class="fa fa-close"></i>
+					</span>
+				</button>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+				<button type="button" class="btn btn-danger" onclick="deleteAccount()">Supprimer</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	function deleteAccount() {
+var url = "{{ path('app_user_params_delete_account') }}";
+window.location.href = url; // a revoir
+}
+</script>

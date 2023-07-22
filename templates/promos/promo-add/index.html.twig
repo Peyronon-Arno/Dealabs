@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add new promo !
+{% endblock %}
+
+{% block body %}
+	<link rel="stylesheet" href="{{ asset('css/registration.css') }}">
+	<style>
+		.body {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	</style>
+	<div class="main-login-content">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card main-login-width">
+					<h2 class="text-center">Poster un nouveau code promo</h2>
+					<hr>
+					{% for flash_error in app.flashes('error') %}
+						<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+					{% endfor %}
+					{{ form_start(form) }}
+					{{ form_widget(form) }}
+					<button type="submit" class="btn btn-login">Poster</button>
+					{{ form_end(form) }}
+				</div>
+
+			</div>
+			<div class="col-md-6">
+				<div class="card main-login-width">
+					<h2 class="text-center">Prévisualisation</h2>
+					<hr>
+					<div class="card d-flex" id="deal-preview">
+						<div class="img-position">
+							<img id="preview-image" src="{{ asset('images/dealabs-default.jpg') }}" class="card-img-top" alt="">
+						</div>
+						<div class="card-body body">
+							<h5 id="preview-title" class="card-title title">Titre du code promo</h5>
+							<h5 id="preview-promo" class="card-title title">Nom du code promo</h5>
+							<h3 id="preview-description" class="card-title description">Description</h3>
+							<h3 id="preview-reduction" class="card-text price">
+								<strong>Réduction de 0%</strong>
+							</h3>
+
+							<h3 id="preview-time" class="card-text time"></h3>
+							<span id="preview-username" class="card-text">
+								<i class="fa fa-user"></i>
+								Partagé par Utilisateur
+								{{ username }}
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		var form = document.querySelector('#{{ form.vars.id }}');
+var preview = document.querySelector('#deal-preview');
+var previewTitle = document.querySelector('#preview-title');
+var previewPromo = document.querySelector('#preview-promo');
+var previewDescription = document.querySelector('#preview-description');
+var previewReduction = document.querySelector('#preview-reduction');
+var previewTime = document.querySelector('#preview-time');
+
+form.addEventListener('input', function () {
+var title = document.querySelector('#{{ form.vars.id }}_title').value;
+var description = document.querySelector('#{{ form.vars.id }}_description').value;
+var code = document.querySelector('#{{ form.vars.id }}_code').value;
+var reduction = document.querySelector('#{{ form.vars.id }}_reduction').value;
+var expirationDate = document.querySelector('#{{ form.vars.id }}_expirationDate').value;
+var currentDate = new Date();
+
+var timeDifference = new Date(expirationDate) - currentDate;
+
+var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+var timeRemaining = '';
+
+if (days > 0) {
+timeRemaining += days + ' jour(s) ';
+}
+if (hours > 0) {
+timeRemaining += hours + ' heure(s) ';
+}
+if (minutes > 0) {
+timeRemaining += minutes + ' minute(s)';
+}
+
+previewTitle.textContent = title;
+previewPromo.textContent = code;
+previewReduction.innerHTML = '<strong>' + reduction + '%</strong>';
+previewDescription.textContent = description;
+previewTime.textContent = 'Temps restant : ' + timeRemaining;
+
+});
+	</script>
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+<label for="email">ADRESSE E-MAIL ASSOCIÉE</label>
+<span>{{ user.email }}</span>
+<div class="btn-container">
+	<button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#modalEmail">Modifier</button>
+</div>
+
+{# MODAL + SCRIPT TO EDIT EMAIL #}
+<div class="modal fade" id="modalEmail" tabindex="-1" role="dialog" aria-labelledby="modalEmailLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalEmailLabel">Modifier votre email</h5>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">
+						<i class="fa fa-close"></i>
+					</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="newEmail">Nouveau email</label>
+						<input type="email" class="form-control" id="newEmail">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+				<button type="button" class="btn btn-primary" onclick="saveEmail()">Enregistrer</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function saveEmail() {
+var newEmail = $('#newEmail').val();
+
+if (newEmail.includes('@') && newEmail.includes('.')) {
+var url = "{{ path('app_user_params_edit_email', { 'value': '__VALUE__' }) }}";
+url = url.replace('__VALUE__', newEmail);
+window.location.href = url;
+} else {
+alert('Veuillez saisir une adresse e-mail valide.');
+}
+}
+</script>

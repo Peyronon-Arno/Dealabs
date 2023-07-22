@@ -1,0 +1,10 @@
+{% block body %}
+
+	<link rel="stylesheet" href="{{ asset('css/tab-alert.css') }}">
+	{{ include('user_account/user-tabs/tab-alertes/navbar-tab-alertes.html.twig', {'second_tab': second_tab}) }}
+	{% if second_tab == 'alertes-fil' %}
+		{{ include('user_account/user-tabs/tab-alertes/fil-alertes.html.twig', {'dealsAlert': dealsAlert}) }}
+	{% elseif second_tab == 'alertes-param' %}
+		{{ include('user_account/user-tabs/tab-alertes/param-alertes.html.twig') }}
+	{% endif %}
+{% endblock %}

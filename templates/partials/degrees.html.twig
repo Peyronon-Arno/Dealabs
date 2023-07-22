@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="{{ asset('css/degrees.css') }}">
+
+<div
+	class="degrees">
+	{# Si l'utilisateur n'est pas connecté ou qu'il a dejà noter un item on desactive le bouton 
+																																																																																																											Sinon on lui permet de noter le item  #}
+	{% if ((app.user == null) or (app.user.asNotation(item))) %}
+		<a href="" class="btn degree-minus disabled">-</a>
+	{% else %}
+		{% if item is instanceof('App\\Entity\\Promo') %}
+			<a href="{{ path('app_promo_rate_negative', { 'id': item.id }) }}" class="btn degree-minus">-</a>
+		{% elseif item is instanceof('App\\Entity\\Deal') %}
+			<a href="{{ path('app_deals_rate_negative', { 'id': item.id }) }}" class="btn degree-minus">-</a>
+		{% endif %}
+	{% endif %}
+	<span>{{item.degree}}°</span>
+
+	{# Si l'utilisateur n'est pas connecté ou qu'il a dejà noter un item on desactive le bouton 
+																																																																																																												Sinon on lui permet de noter le item  #}
+	{% if ((app.user == null) or (app.user.asNotation(item))) %}
+		<a href="" class="btn degree-plus disabled">+</a>
+	{% else %}
+		{% if item is instanceof('App\\Entity\\Promo') %}
+			<a href="{{ path('app_promo_rate_positive', { 'id': item.id }) }}" class="btn degree-plus">+</a>
+		{% elseif item is instanceof('App\\Entity\\Deal') %}
+			<a href="{{ path('app_deals_rate_positive', { 'id': item.id }) }}" class="btn degree-plus">+</a>
+		{% endif %}
+	{% endif %}
+</div>

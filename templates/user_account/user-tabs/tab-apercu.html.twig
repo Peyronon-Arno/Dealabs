@@ -1,0 +1,10 @@
+{% block body %}
+	<div class="main-div-user">
+		<div class="stats">
+			{{ include('user_account/user-tabs/tab-apercu/stats.html.twig', {'hotestDealValue': hotestDealValue, 'averageDegrees':averageDegrees, 'hotDealPercentage':hotDealPercentage }) }}
+		</div>
+		<div class="main-container-width">
+			{{ include('user_account/user-tabs/tab-apercu/badges.html.twig', {'badges': badges }) }}
+		</div>
+	</div>
+{% endblock %}

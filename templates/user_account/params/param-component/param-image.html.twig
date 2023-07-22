@@ -1,0 +1,45 @@
+<label for="avatar">VOTRE AVATAR (Facultatif)</label>
+<div class="btn-container image-avatar">
+	{% if user %}
+		<img src="{{ vich_uploader_asset(user, 'image') }}" class="card-img-top img-thumbnail" alt="{{ user.username }}">
+	{% else %}
+		<img src="" alt="Avatar" class="img-thumbnail">
+	{% endif %}
+	<div>
+		<a class="btn btn-lg btn-primary" onclick="openFileExplorer()">Remplacer</a>
+		<input type="file" id="avatarFileInput" style="display: none;">
+		<a href="{{ path('app_user_params_delete_image') }}" class="btn btn-lg btn-danger">Supprimer</a>
+	</div>
+</div>
+
+<script>
+	function openFileExplorer() {
+document.getElementById('avatarFileInput').click();
+}
+document.getElementById('avatarFileInput').addEventListener('change', handleFileSelection);
+
+function handleFileSelection(event) {
+const file = event.target.files[0];
+
+if (file) {
+console.log('Fichier sélectionné:', file.name);
+const imgElement = document.querySelector('.img-thumbnail');
+const imageURL = URL.createObjectURL(file);
+imgElement.src = imageURL;
+
+var formData = new FormData();
+formData.append('avatar', file);
+
+var xhr = new XMLHttpRequest();
+xhr.open('POST', '{{ path('app_user_params_edit_image') }}', true);
+xhr.onload = function () {
+if (xhr.status === 200) {
+location.reload();
+} else {
+console.error(xhr.responseText);
+}
+};
+xhr.send(formData);
+}
+}
+</script>

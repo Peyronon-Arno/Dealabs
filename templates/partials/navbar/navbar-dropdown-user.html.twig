@@ -1,0 +1,36 @@
+<li class="nav-item dropdown">
+	<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+		<i class="fa-solid fa-user"></i>
+	</a>
+	<ul class="dropdown-menu">
+		<li>
+			<a class="dropdown-item" href="{{ path('app_user_account') }}">Mon profil
+				<i class="fa-solid fa-user"></i>
+			</a>
+		</li>
+		<li>
+			<a class="dropdown-item" href="{{ path('app_user_saved') }}">Mes favoris
+				<i class="fa-solid fa-star"></i>
+			</a>
+		</li>
+		<li>
+			<a class="dropdown-item" href="{{ path('app_user_deals') }}">Mes deals
+				<i class="fa-solid fa-tag"></i>
+			</a>
+		</li>
+		<li>
+			<a class="dropdown-item" href="{{ path('app_user_signal') }}">Mes signalements
+				<i class="fa-solid fa-warning"></i>
+			</a>
+		</li>
+		<li>
+			<a class="dropdown-item" href="{{ path('app_user_params') }}">Paramètres
+				<i class="fa-solid fa-gear"></i>
+			</a>
+		</li>
+		<li><hr class="dropdown-divider"></li>
+		<li>
+			<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+		</li>
+	</ul>
+</li>

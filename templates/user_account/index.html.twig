@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Your account
+{% endblock %}
+
+{% block body %}
+
+	<link rel="stylesheet" href="{{ asset('css/user-account.css') }}">
+	<div class="main-header">
+		<div class="row user-header align-items-center">
+			<div class="col-md-1 text-center">
+				{% if app.user %}
+					<img src="{{ vich_uploader_asset(app.user, 'image') }}" class="card-img-top" alt="{{ app.user.username }}">
+				{% else %}
+					<a href="{{ path('app_user_params') }}" class="img-fluid rounded-image" style="font-size: 50px; text-decoration: none; color: white">
+						+
+					</a>
+				{% endif %}
+			</div>
+			<div class="col-md-8">
+				<div class="d-flex align-items-center justify-content-center justify-content-md-start">
+					<h5>{{ app.user }}</h5>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{{ include('partials/navbar-user.html.twig') }}
+	{% if current_tab == 'apercu' %}
+		{{ include('user_account/user-tabs/tab-apercu.html.twig', {'badges': badges}) }}
+	{% elseif current_tab == 'deals' %}
+		{{ include('user_account/user-tabs/tab-deals.html.twig') }}
+	{% elseif current_tab == 'sauvegardes' %}
+		{{ include('user_account/user-tabs/tab-saved.html.twig', {'savedDeals':savedDeals}) }}
+	{% elseif current_tab == 'signal' %}
+		{{ include('user_account/user-tabs/tab-signaled.html.twig', {'signaledDeals':signaledDeals}) }}
+	{% elseif current_tab == 'alertes' %}
+		{{ include('user_account/user-tabs/tab-alertes.html.twig', {'second_tab': second_tab}) }}
+	{% endif %}
+{% endblock %}

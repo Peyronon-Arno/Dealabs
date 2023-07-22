@@ -1,0 +1,40 @@
+.alert-nav {
+  justify-content: center;
+  display: flex;
+}
+.navbar-alert {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.ul-alert {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-alert {
+  margin-top: 10px;
+  width: 80%;
+}
+
+.temp-alert {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.temperature-btn {
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.btn-create {
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+
+.form-notification {
+  margin-top: 5%;
+  margin-bottom: 2%;
+}

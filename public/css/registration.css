@@ -1,0 +1,44 @@
+.main-login-content {
+    padding-top: 2%;
+    display: flex;
+    justify-content: center;
+}
+
+.main-login-width {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.login-form {
+    padding: 10px;
+}
+
+.input-login {
+    padding-bottom: 3%;
+}
+
+.linkable a {
+    text-decoration: none;
+    padding-inline: 5px;
+}
+
+.btn-login-div {
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.btn-login {
+    width: 100%;
+    background-color: #36b7cd;
+    border-color: #36b7cd;
+}
+
+.btn-login:hover {
+    background-color: #3cc8df;
+    border-color: #3cc8df;
+}

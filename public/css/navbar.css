@@ -1,0 +1,29 @@
+.navbar-custom {
+    background-color: #35373b;
+    justify-content: center;
+}
+
+.navbar-content {
+    justify-content: center
+}
+
+.btn-ajout,
+.btn-ajout:hover {
+    background-color: #36b7cd;
+    border-color: #36b7cd;
+}
+
+.btn-connexion,
+.btn-connexion:hover {
+    background-color: #4b4b4e;
+    border-color: #4b4b4e;
+}
+
+.form-input {
+    display: flex;
+    padding-inline: 10px
+}
+
+.nav-item {
+    padding-inline: 5px
+}

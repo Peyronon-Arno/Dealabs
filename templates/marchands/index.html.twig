@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Marchands promotion
+
+{% endblock %}
+
+{% block body %}
+
+	{% for promo in promos %}
+		{{ include('partials/promos/promoCard.html.twig', {'promo': promo}) }}
+	{% endfor %}
+{% endblock %}

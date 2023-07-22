@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="{{ asset('css/popular-list.css') }}">
+
+<div class="popular-card">
+	<h2 class="popular-card-title">Marchands populaires</h2>
+	<hr>
+	<div class="popular-list">
+		{% for marchand in marchands %}
+			<div class="popular-item">
+				<a href="{{ path('app_marchand_promos', { 'id': marchand.id }) }}">
+					<img src="{{ asset('images/marchands/' ~ marchand.image) }}" alt="Image not found">
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+</div>
